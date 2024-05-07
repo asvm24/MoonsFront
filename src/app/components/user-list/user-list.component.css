@@ -1,12 +1,11 @@
-
-
-
 .user-list-container {
   display: flex;
   flex-direction: column;
   justify-content: center;
   height: 100vh;
   margin: auto;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 .user-item {
