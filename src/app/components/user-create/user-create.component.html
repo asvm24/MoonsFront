@@ -1,24 +1,12 @@
-
-<form class="user-form" (ngSubmit)="createUser(user)">
-  <div class="form-group">
-    <label for="email">Email:</label>
-    <input type="email" id="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email" required>
-  </div>
-  <div class="form-group">
-    <label for="firstName">First Name:</label>
-    <input type="text" id="firstName" class="form-control" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name" required>
-  </div>
-  <div class="form-group">
-    <label for="lastName">Last Name:</label>
-    <input type="text" id="lastName" class="form-control" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name" required>
-  </div>
-  <div class="form-group">
-    <label for="role">Role:</label>
-    <input type="text" id="role" class="form-control" [(ngModel)]="user.role" name="role" placeholder="Role" required>
-  </div>
-  <div class="form-group">
-    <label for="phoneNumber">Phone Number:</label>
-    <input type="tel" id="phoneNumber" class="form-control" [(ngModel)]="user.phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
-  </div>
-  <button  mat-dialog-close type="submit" class="btn btn-primary">Create User</button>
-</form>
+<h2 mat-dialog-title>Create User</h2>
+<mat-dialog-content [formGroup]="form">
+  <ng-container *ngFor="let field of fields">
+    <mat-form-field>
+      <input matInput [placeholder]="field.placeholder" [formControlName]="field.name">
+    </mat-form-field>
+  </ng-container>
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button  (click)="onNoClick()">Cancel</button>
+  <button  [disabled]="!form.valid" (click)="createUser()">Create User</button>
+</mat-dialog-actions>

@@ -14,6 +14,7 @@ export class UserListComponent implements OnInit {
 
   constructor(private userService: UserService, public dialog: MatDialog) { }
 
+  
   ngOnInit(): void {
     this.loadUsers();
   }
@@ -29,17 +30,24 @@ export class UserListComponent implements OnInit {
       this.loadUsers(); // Reload users after deletion
     });
   }
+  dialogIsOpen = false;
 
   openCreateUserDialog(): void {
-    const dialogRef = this.dialog.open(UserCreateComponent, {
-      width: '500px', // Set the width of the dialog
-    });
-
-    dialogRef.afterClosed().subscribe(result => {
-      // Reload users after dialog is closed, if needed
-      if (result === 'success') {
+    if (!this.dialogIsOpen) {
+      this.dialogIsOpen = true;
+      const dialogRef = this.dialog.open(UserCreateComponent, {
+        width: '400px',
+        disableClose: false, 
+        hasBackdrop: true 
+      });
+  
+      dialogRef.afterClosed().subscribe(() => {
+        this.dialogIsOpen = false;
         this.loadUsers();
-      }
-    });
+      });
+    }
   }
+  
 }
+
+

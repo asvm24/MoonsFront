@@ -1,12 +1,12 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
 import { HttpClientModule } from '@angular/common/http';
 import { UserCreateComponent } from './components/user-create/user-create.component';
 import { UserListComponent } from './components/user-list/user-list.component';
 import { RouterModule, Routes } from '@angular/router';
-import { MatDialogModule } from '@angular/material/dialog';
+import { MatDialogActions, MatDialogClose, MatDialogContent, MatDialogModule, MatDialogTitle } from '@angular/material/dialog';
 import { MatInputModule } from '@angular/material/input';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatButtonModule } from '@angular/material/button';
@@ -26,10 +26,15 @@ const routes: Routes = [
     UserListComponent
   ],
   imports: [
-    MatDialogModule,
-    MatButtonModule,
-    MatInputModule,
     MatFormFieldModule,
+    MatInputModule,
+    FormsModule,
+    MatButtonModule,
+    MatDialogTitle,
+    MatDialogContent,
+    MatDialogActions,
+    MatDialogClose,
+    ReactiveFormsModule,
     BrowserModule,
     FormsModule,
     HttpClientModule,
