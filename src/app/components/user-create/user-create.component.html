@@ -1,0 +1,24 @@
+
+<form class="user-form" (ngSubmit)="createUser(user)">
+  <div class="form-group">
+    <label for="email">Email:</label>
+    <input type="email" id="email" class="form-control" [(ngModel)]="user.email" name="email" placeholder="Email" required>
+  </div>
+  <div class="form-group">
+    <label for="firstName">First Name:</label>
+    <input type="text" id="firstName" class="form-control" [(ngModel)]="user.firstName" name="firstName" placeholder="First Name" required>
+  </div>
+  <div class="form-group">
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" class="form-control" [(ngModel)]="user.lastName" name="lastName" placeholder="Last Name" required>
+  </div>
+  <div class="form-group">
+    <label for="role">Role:</label>
+    <input type="text" id="role" class="form-control" [(ngModel)]="user.role" name="role" placeholder="Role" required>
+  </div>
+  <div class="form-group">
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="tel" id="phoneNumber" class="form-control" [(ngModel)]="user.phoneNumber" name="phoneNumber" placeholder="Phone Number" required>
+  </div>
+  <button  mat-dialog-close type="submit" class="btn btn-primary">Create User</button>
+</form>

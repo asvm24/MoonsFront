@@ -1,0 +1,9 @@
+<div class="user-list">
+  <div *ngFor="let user of users" class="user-item">
+    <span>{{ user.email }}</span>
+    <span>{{ user.firstName }} {{ user.lastName }}</span>
+    <span>{{ user.role }}</span>
+    <button (click)="deleteUser(user)" class="btn-delete">Delete</button>
+  </div>
+</div>
+<button (click)="openCreateUserDialog()" class="btn-add">Add User</button>

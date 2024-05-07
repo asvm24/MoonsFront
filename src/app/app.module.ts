@@ -1,18 +1,43 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
-import { AppRoutingModule } from './app-routing.module';
+import { FormsModule } from '@angular/forms';
 import { AppComponent } from './app.component';
+import { HttpClientModule } from '@angular/common/http';
+import { UserCreateComponent } from './components/user-create/user-create.component';
+import { UserListComponent } from './components/user-list/user-list.component';
+import { RouterModule, Routes } from '@angular/router';
+import { MatDialogModule } from '@angular/material/dialog';
+import { MatInputModule } from '@angular/material/input';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatButtonModule } from '@angular/material/button';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+
+const routes: Routes = [
+  { path: '', redirectTo: '/users', pathMatch: 'full' }, // Redirect to '/users'
+  { path: 'users', component: UserListComponent }, // UserList route
+  { path: 'users/create', component: UserCreateComponent }, // UserCreate route
+  // Add more routes as needed
+];
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    UserCreateComponent,
+    UserListComponent
   ],
   imports: [
+    MatDialogModule,
+    MatButtonModule,
+    MatInputModule,
+    MatFormFieldModule,
     BrowserModule,
-    AppRoutingModule
+    FormsModule,
+    HttpClientModule,
+    RouterModule.forRoot(routes)
   ],
-  providers: [],
+  providers: [
+    provideAnimationsAsync()
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
